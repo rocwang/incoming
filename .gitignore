@@ -1,3 +1,5 @@
 assets/
 protected/runtime/
-themes/classic/views/
+protected/data/
+yii
+yii-1.1.10.r3566/

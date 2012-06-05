@@ -1,12 +1,13 @@
-incoming
+Incoming
 ========
 
 Aggregate all the incoming information for you
 
-todo
+Todo
 ====
 
-Simple push API
-Google Reader
-RSS
-Email
+* Email
+* Google Reader
+* Simple API for pushing message
+* RSS
+* Twitter/Weibo

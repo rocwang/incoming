@@ -1,5 +1,5 @@
-www/assets/
-runtime/
 protected/data/
-yii
 yii-1.1.10.r3566/
+
+yii
+protected/config/credentials.php

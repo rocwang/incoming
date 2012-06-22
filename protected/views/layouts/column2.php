@@ -1,21 +1,13 @@
 <?php $this->beginContent('//layouts/main'); ?>
-<div class="span-19">
-	<div id="content">
-		<?php echo $content; ?>
-	</div><!-- content -->
-</div>
-<div class="span-5 last">
-	<div id="sidebar">
-	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Operations',
-		));
-		$this->widget('zii.widgets.CMenu', array(
+<div class="span3">
+	<div class="well sidebar-nav">
+		<?php $this->widget('bootstrap.widgets.BootMenu', array(
+			'type'=>'list',
 			'items'=>$this->menu,
-			'htmlOptions'=>array('class'=>'operations'),
-		));
-		$this->endWidget();
-	?>
-	</div><!-- sidebar -->
+		)); ?>
+	</div>
+</div>
+<div class="span9">
+	<?php echo $content; ?>
 </div>
 <?php $this->endContent(); ?>

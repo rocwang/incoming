@@ -100,4 +100,48 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionEmail()
+	{
+		$host = 'imap.qq.com:143';
+		$user = '11712219@qq.com';
+		$password = '120784@qq';
+		$mailbox = "{{$host}}INBOX";
+		$mbox = imap_open($mailbox , $user , $password);
+
+		/*imap_check returns information about the mailbox
+		  including mailbox name and number of messages*/
+		$check = imap_check($mbox);
+
+		/*imap_fetch_overview returns an overview for a message.
+		  An overview contains information such as message subject,
+		  sender, date, and if it has been seen. Note that it does
+		  not contain the body of the message. Setting the second
+		  parameter to "1:n" will cause it to return a sequence of messages*/
+		$overviews = imap_fetch_overview($mbox,"1:{$check->Nmsgs}");
+
+		$this->render('email', array('overviews'=>$overviews));
+	}
+
+	public function actionRead($uid)
+	{
+		$host = 'imap.qq.com:143';
+		$user = '11712219@qq.com';
+		$password = '120784@qq';
+		$mailbox = "{{$host}}INBOX";
+		$mbox = imap_open($mailbox , $user , $password);
+
+		$overview = imap_fetch_overview($mbox, $uid, FT_UID);
+		$body = imap_body($mbox, $uid, FT_UID);
+
+		require_once 'Mail/mimeDecode.php';
+		$params['include_bodies'] = true;
+		$params['decode_bodies']  = true;
+		$params['decode_headers'] = false;
+
+		$decoder = new Mail_mimeDecode($body);
+		$structure = $decoder->decode($params);
+
+		$this->render('read', array('overview'=>$overview[0], 'body'=>$body));
+	}
 }

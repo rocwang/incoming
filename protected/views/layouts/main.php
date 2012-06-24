@@ -53,13 +53,13 @@
 	</div>
 <?php
 	Yii::app()->clientScript->registerScriptFile(
-		'/js/hammer.js',
+		Yii::app()->baseUrl.'/js/hammer.js',
 		CClientScript::POS_END
 	)->registerScriptFile(
-		'/js/jquery.hammer.js',
+		Yii::app()->baseUrl.'/js/jquery.hammer.js',
 		CClientScript::POS_END
 	)->registerScriptFile(
-		'/js/incoming.js',
+		Yii::app()->baseUrl.'/js/incoming.js',
 		CClientScript::POS_END
 	);
 ?>

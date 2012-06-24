@@ -19,56 +19,49 @@
 	<link rel="apple-touch-icon-precomposed" href="<?php echo Yii::app()->request->baseUrl; ?>/ico/apple-touch-icon-57-precomposed.png"-->
 </head>
 <body>
-<?php $this->widget('bootstrap.widgets.BootNavbar', array(
-	//'fixed'=>true,
-	'fluid'=>true,
-	'brand'=>Yii::app()->name,
-	'collapse'=>true,
-	'items'=>array(
-		array(
-			'class'=>'bootstrap.widgets.BootMenu',
-			'items'=>array(
-				array('label'=>'刷新', 'url'=>array('site/list')),
+	<?php $this->widget('bootstrap.widgets.BootNavbar', array(
+		//'fixed'=>true,
+		'fluid'=>true,
+		'brand'=>Yii::app()->name,
+		'collapse'=>true,
+		'items'=>array(
+			array(
+				'class'=>'bootstrap.widgets.BootMenu',
+				'items'=>array(
+					array('label'=>'刷新', 'url'=>array('site/list')),
+				),
 			),
-		),
 
-		CHtml::openTag('p', array('class'=>'navbar-text pull-right')).
-			CHtml::tag('i', array('class'=>'icon-white icon-user'), '', true).' '.
-			(Yii::app()->user->isGuest ?
-				CHtml::link('登录', Yii::app()->user->loginUrl)
-				:
-				sprintf("%s - %s(%s) ",
-					Yii::app()->user->deptName,
-					Yii::app()->user->name,
-					Yii::app()->user->chineseName
-				) .CHtml::link('登出', array('site/logout')))
-		.CHtml::closeTag('p'),
-	),
-)); ?>
+			CHtml::openTag('p', array('class'=>'navbar-text pull-right')).
+				CHtml::tag('i', array('class'=>'icon-white icon-user'), '', true).' '.
+				(Yii::app()->user->isGuest ?
+					CHtml::link('登录', Yii::app()->user->loginUrl)
+					:
+					sprintf("%s - %s(%s) ",
+						Yii::app()->user->deptName,
+						Yii::app()->user->name,
+						Yii::app()->user->chineseName
+					) .CHtml::link('登出', array('site/logout')))
+			.CHtml::closeTag('p'),
+		),
+	)); ?>
 
 	<div class="container-fluid" id="page">
-
-	<?php //$this->renderPartial('//site/_alert'); ?>
-
-	<?php if(!empty($this->breadcrumbs)) {
-		$this->widget('bootstrap.widgets.BootBreadcrumbs', array(
-		'links'=>$this->breadcrumbs,
-	));} ?>
-
 		<div class="row-fluid">
 			<?php echo $content; ?>
 		</div>
-
-		<hr>
-
-		<footer>
-			<address class="pull-right">
-				By <strong>rocwang</strong><br>
-				Mar 2012<br>
-				<a href="mailto:rocinwinter@gmail.com">rocinwinter@gmail.com</a><br>
-				<a href="http://rocwang.me" target="_blank">http://rocwang.me</a>
-			</address>
-		</footer>
 	</div>
+<?php
+	Yii::app()->clientScript->registerScriptFile(
+		'/js/hammer.js',
+		CClientScript::POS_END
+	)->registerScriptFile(
+		'/js/jquery.hammer.js',
+		CClientScript::POS_END
+	)->registerScriptFile(
+		'/js/incoming.js',
+		CClientScript::POS_END
+	);
+?>
 </body>
 </html>

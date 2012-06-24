@@ -3,6 +3,13 @@ class SiteController extends Controller
 {
 	public $defaultAction = 'list';
 
+	public function actions()
+	{
+		return array(
+			'markRead'=>'application.controllers.site.markReadAction',
+		);
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
@@ -131,8 +138,8 @@ class SiteController extends Controller
 
 	public function actionList()
 	{
-		$mails = $this->_getAllMails();
-		//$mails = array();
+		//$mails = $this->_getAllMails();
+		$mails = array();
 		$feeds = $this->_getFeeds();
 
 		$this->render('list', array(

@@ -1,10 +1,10 @@
 <div class="accordion" id="accordion">
 	<?php foreach($feeds as $index => $feed) { ?>
 	<div class="accordion-group">
-		<div class="accordion-heading">
-			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#feed_<?php echo $index; ?>">
+		<div class="accordion-heading" item_id="<?php echo $feed->id; ?>">
+			<span class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#feed_<?php echo $index; ?>">
 				<?php echo $feed->title; ?>>
-			</a>
+			</span>
 		</div>
 		<div id="feed_<?php echo $index; ?>" class="accordion-body collapse">
 			<div class="accordion-inner">

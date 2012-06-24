@@ -3,11 +3,7 @@
 	padding-bottom: 40px;
 }}
 
-/*body, p, input, button, select, textarea {*/
-	/*font-family: "Microsoft Yahei","黑体","Helvetica Neue",Helvetica,Arial,sans-serif*/
-/*}*/
-/*.sidebar-nav {*/
-	/*padding: 9px 0;*/
-/*}*/
-/*.yes {color:green}*/
-/*.no  {color:red}*/
+div.accordion-heading {font-size:16px; line-height:30px}
+
+div.accordion-body {font-size:16px}
+div.accordion-body p {font-size:16px}

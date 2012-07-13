@@ -3,7 +3,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading" item_id="<?php echo $feed->id; ?>">
 			<span class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#feed_<?php echo $index; ?>">
-				<?php echo $feed->title; ?>>
+				<?php echo $feed->title; ?>
 			</span>
 		</div>
 		<div id="feed_<?php echo $index; ?>" class="accordion-body collapse">
@@ -15,7 +15,7 @@
 					if (isset($feed->summary)) {
 						echo $feed->summary->content;
 					}
-				?>>
+				?>
 			</div>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#mail_<?php echo $index; ?>">
-				<?php echo imap_utf8($mail->subject); ?>>
+				<?php echo imap_utf8($mail->subject); ?>
 			</a>
 		</div>
 		<div id="mail_<?php echo $index; ?>" class="accordion-body collapse">

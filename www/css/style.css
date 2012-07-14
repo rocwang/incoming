@@ -5,6 +5,8 @@
 	}
 }
 
+div#items {padding:0}
+
 div.accordion-group {border:none}
 div.accordion-heading {font-size:16px; line-height:30px}
 div.accordion-body {font-size:16px}

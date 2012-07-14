@@ -1,12 +1,13 @@
 <?php
 class SiteController extends Controller
 {
-	public $defaultAction = 'list';
+	public $defaultAction = false;
 
 	public function actions()
 	{
 		return array(
-			'markRead'=>'application.controllers.site.markReadAction',
+			'list'     => 'application.controllers.site.listAction',
+			'markRead' => 'application.controllers.site.markReadAction',
 		);
 	}
 
@@ -109,21 +110,6 @@ class SiteController extends Controller
 		return $overviews;
 	}
 
-	private function _getFeeds()
-	{
-		$googleReader = new GoogleReaderAPI(
-			Yii::app()->params['credentials']['googleReader']['username'],
-			Yii::app()->params['credentials']['googleReader']['password']
-		);
-
-		//get first 10 unread items from google reader
-		$unreadItems = $googleReader ->get_unread(10);
-
-		//CVarDumper::dump($unreadItems, 10, true);die;
-
-		return $unreadItems->items;
-	}
-
 	public function actionDebug()
 	{
 		$googleReader = new GoogleReaderAPI(
@@ -134,18 +120,6 @@ class SiteController extends Controller
 		$unreadItems = $googleReader ->get_unread(10);
 
 		CVarDumper::dump($unreadItems, 10, true);
-	}
-
-	public function actionList()
-	{
-		//$mails = $this->_getAllMails();
-		$mails = array();
-		$feeds = $this->_getFeeds();
-
-		$this->render('list', array(
-			'mails' => $mails,
-			'feeds' => $feeds,
-		));
 	}
 
 	public function actionRead($uid)

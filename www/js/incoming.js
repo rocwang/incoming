@@ -20,7 +20,12 @@ function refresh()
 
 $('#accordion').on('swipe', '.accordion-heading', function(ev) {
 	if (ev.direction === 'right') {
-		$(ev.target).wrapInner('<del/>');
+		$(ev.target).wrapInner('<del/>').parent().fadeOut(
+			function() {
+				$(this).remove();
+			}
+		);
+
 		$.getJSON(
 			'api.php',
 			{
@@ -28,13 +33,8 @@ $('#accordion').on('swipe', '.accordion-heading', function(ev) {
 				id : $(ev.target).attr('item_id')
 			},
 			function(data, textStatus, jqXHR) {
-				if (jqXHR.status === 200) {
-					$(ev.target).parent().fadeOut(
-						function() {
-							$(this).remove();
-						}
-					);
-				}
+				//if (jqXHR.status === 200) {
+				//}
 			}
 		);
 	}

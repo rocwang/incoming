@@ -2,11 +2,14 @@
 	div#items {margin:0 -20px}
 }
 
+@media (max-width: 979px){
+	.navbar-fixed-top {margin-bottom: 0;}
+}
+
 img.loader {margin-top:8px}
 
-div#items {padding:0}
-
-div.accordion-group {border:none}
-div.accordion-heading {font-size:16px; line-height:30px}
-div.accordion-body {font-size:16px}
-div.accordion-body p {font-size:16px}
+div.accordion-group {
+	border      : none;
+	font-size   : 1.3em;
+	line-height : 1.5em;
+}
